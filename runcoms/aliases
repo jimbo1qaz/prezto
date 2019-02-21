@@ -1,0 +1,79 @@
+zstyle ':prezto:module:utility' safe-ops no
+
+alias aconda=". ~/miniconda3/bin/activate"
+alias ca="conda activate"
+alias jn="jupyter notebook"
+
+alias gga="git rev-list --all | xargs git grep"
+alias gfcs="gfc --depth 1"
+alias gla="glg \$(git rev-list -g --all)"
+alias grb="git rebase -i \`git merge-base HEAD master\`"
+back() {
+	git reset --hard HEAD~$1
+}
+grp() {
+	git rebase -i HEAD~$1
+}
+squash() {
+	arg1=$1
+	base=${arg1:-master}
+
+	branch=`git rev-parse --abbrev-ref HEAD`
+	# commit=git rev-parse HEAD
+
+	git checkout --detach $base
+	git merge --squash $branch
+	git commit -m "Squash branch \"$branch\""
+	git checkout -B $branch HEAD
+}
+
+# git branch :=
+alias gbe="git checkout -B"
+
+# continue
+# alias grc="git rebase --continue"
+alias gmc="git merge --continue"
+alias gcpc="git cherry-pick --continue"
+
+# abort
+# alias gra="git rebase --abort"
+# alias gma="git merge --abort"
+alias gcpa="git cherry-pick --abort"
+
+# Backup git branch
+old() {
+	git update-ref refs/old/$1 $1 || return
+	git branch -D $1
+	git tag -d $1
+}
+
+# git cola dag
+alias daga="git dag -- --all"
+
+# personal
+alias update="gco master && gfm && gRp origin"
+alias p=poetry
+alias pr="poetry run"
+
+# apt-get
+alias a="sudo apt"
+alias sai="sudo apt install"
+alias sar="sudo apt remove"
+alias auto="sudo apt-mark auto"
+
+alias ag="alias | grep"
+
+alias d2u="find . -type f -print0 | xargs -0 dos2unix"
+
+alias xo="xdg-open"
+alias cls='clear && echo -en "\e[3J"'
+
+alias font="sudo fc-cache -f -v"
+
+alias remount="sudo mount -o remount,rw"
+alias renge=funky
+
+export ANDROID_HOME="~/Android/Sdk"
+export PATH="$PATH:`echo ~`/src/fdroidserver"
+#LESS='-F -g -i -M -R -S -w -X -z-4'
+export LESS='-i -M -w -R -X -z-4'
