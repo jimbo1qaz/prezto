@@ -25,6 +25,9 @@ squash() {
 	git merge --squash $branch
 	git commit -m "Squash branch \"$branch\""
 	git checkout -B $branch HEAD
+
+	# git reset --soft $base
+	# git commit -m "Squash branch \"$branch\""
 }
 
 # git branch :=
