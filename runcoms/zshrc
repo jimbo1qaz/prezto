@@ -1,4 +1,6 @@
 . /home/jimbo1qaz/miniconda3/etc/profile.d/conda.sh
+
+zstyle ':prezto:module:utility' safe-ops no
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
