@@ -4,38 +4,41 @@ alias aconda=". ~/miniconda3/bin/activate"
 alias ca="conda activate"
 alias jn="jupyter notebook"
 
-alias gga="git rev-list --all | xargs git grep"
+alias pj=pijul
+
 alias gfcs="gfc --depth 1"
+
+# Viewing all history
+# git log
+# overwrite zprezto
+alias glg='git log --topo-order --branches --tags --remotes --graph --pretty=format:"${_git_log_oneline_format}"'
+alias glgg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'
 alias gla="glg \$(git rev-list -g --all)"
+alias gga="git rev-list --all | xargs git grep"
+alias ggaa="git rev-list -g --all | xargs git grep"
+
+alias gpo="git push origin"
+alias gpd="git push -d origin"
 alias grb="git rebase -i \`git merge-base HEAD master\`"
+alias grbm="git rebase -i --rebase-merges \`git merge-base HEAD master\`"
+alias oops="git diff \`git rev-parse --abbrev-ref HEAD\`@{1} HEAD"
+
+alias detach="gco --detach"
+alias ghr="git reset --soft"
 back() {
-	git reset --hard HEAD~$1
+	git reset HEAD~$1 ${@:2}
 }
 grp() {
 	git rebase -i HEAD~$1
 }
-squash() {
-	arg1=$1
-	base=${arg1:-master}
 
-	branch=`git rev-parse --abbrev-ref HEAD`
-	# commit=git rev-parse HEAD
-
-	git checkout --detach $base
-	git merge --squash $branch
-	git commit -m "Squash branch \"$branch\""
-	git checkout -B $branch HEAD
-
-	# git reset --soft $base
-	# git commit -m "Squash branch \"$branch\""
-}
-
-# git branch :=
+# git branch $1 := $2 ?: HEAD
 alias gbe="git checkout -B"
 
 # continue
 # alias grc="git rebase --continue"
 alias gmc="git merge --continue"
+alias gcp="git cherry-pick"	# prezto aliases to --ff
 alias gcpc="git cherry-pick --continue"
 
 # abort
@@ -46,11 +49,16 @@ alias gcpa="git cherry-pick --abort"
 # Backup git branch
 old() {
 	git update-ref refs/old/$1 $1 || return
+	echo Created ref "refs/old/$1" at `git rev-parse --short $1`
 	git branch -D $1
 	git tag -d $1
 }
+alias archive=old
+
+alias gB="git bisect"
 
 # git cola dag
+alias dag="git dag"
 alias daga="git dag -- --all"
 
 # personal

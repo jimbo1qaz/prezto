@@ -6,3 +6,4 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 . ~/.local/venvs/pyfunky/lib/python3.6/site-packages/scripts/shell/funky.sh
 . ~/.aliases
+#. /home/jimbo1qaz/.zfunc/_poetry
