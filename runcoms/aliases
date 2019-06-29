@@ -1,5 +1,9 @@
 zstyle ':prezto:module:utility' safe-ops no
 
+alias unswap="sudo /home/jimbo1qaz/bin/unswap"
+alias wsync='watch grep -e Dirty: -e Writeback: /proc/meminfo'
+alias pwhich="pyenv which"
+
 alias aconda=". ~/miniconda3/bin/activate"
 alias ca="conda activate"
 alias jn="jupyter notebook"
@@ -21,6 +25,9 @@ alias gpo="git push origin"
 alias gpd="git push -d origin"
 alias grb="git rebase -i \`git merge-base HEAD master\`"
 alias grbm="git rebase -i --rebase-merges \`git merge-base HEAD master\`"
+alias grm='git rebase master'
+alias grmi='git rebase -i master'
+alias gr0='gri `git rev-list --max-parents=0 HEAD`'
 alias oops="git diff \`git rev-parse --abbrev-ref HEAD\`@{1} HEAD"
 
 alias detach="gco --detach"
@@ -87,4 +94,4 @@ alias renge=funky
 export ANDROID_HOME="~/Android/Sdk"
 export PATH="$PATH:`echo ~`/src/fdroidserver"
 #LESS='-F -g -i -M -R -S -w -X -z-4'
-export LESS='-i -M -w -R -X -z-4'
+export LESS='-i -M -w -R -X -z-4 --tabs 4'
