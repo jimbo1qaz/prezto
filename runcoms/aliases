@@ -15,7 +15,7 @@ alias gfcs="gfc --depth 1"
 # Viewing all history
 # git log
 # overwrite zprezto
-alias glg='git log --topo-order --branches --tags --remotes --graph --pretty=format:"${_git_log_oneline_format}"'
+alias glg='git log --topo-order --branches --tags --remotes --graph --pretty=format:"${_git_log_oneline_format}" HEAD'
 alias glgg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'
 alias gla="glg \$(git rev-list -g --all)"
 alias gga="git rev-list --all | xargs git grep"
@@ -23,6 +23,7 @@ alias ggaa="git rev-list -g --all | xargs git grep"
 
 alias gpo="git push origin"
 alias gpd="git push -d origin"
+alias gmb='git merge-base'
 alias grb="git rebase -i \`git merge-base HEAD master\`"
 alias grbm="git rebase -i --rebase-merges \`git merge-base HEAD master\`"
 alias grm='git rebase master'
@@ -91,7 +92,10 @@ alias font="sudo fc-cache -f -v"
 alias remount="sudo mount -o remount,rw"
 alias renge=funky
 
+alias rga='rg --no-ignore'
+
 export ANDROID_HOME="~/Android/Sdk"
 export PATH="$PATH:`echo ~`/src/fdroidserver"
 #LESS='-F -g -i -M -R -S -w -X -z-4'
 export LESS='-i -M -w -R -X -z-4 --tabs 4'
+function gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
