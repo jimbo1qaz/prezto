@@ -39,7 +39,22 @@ back() {
 grp() {
 	git rebase -i HEAD~$1
 }
+squash() {
+	arg1=$1
+	base=${arg1:-master}
 
+	# If detached HEAD, branch=HEAD and commit=hex...
+	branch=`git rev-parse --abbrev-ref HEAD`
+	commit=`git rev-parse HEAD`
+
+	git checkout --detach $base
+	git merge --squash $commit
+	git commit -m "Squash branch '$branch'"
+
+	if [[ $branch != 'HEAD' ]]; then
+		git checkout -B $branch HEAD
+	fi
+}
 # git branch $1 := $2 ?: HEAD
 alias gbe="git checkout -B"
 
