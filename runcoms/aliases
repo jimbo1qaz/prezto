@@ -15,11 +15,13 @@ alias gfcs="gfc --depth 1"
 # Viewing all history
 # git log
 # overwrite zprezto
+alias glog='glo --graph'
 alias glg='git log --topo-order --branches --tags --remotes --graph --pretty=format:"${_git_log_oneline_format}" HEAD'
 alias glgg='git log --topo-order --all --graph --pretty=format:"${_git_log_oneline_format}"'
 alias gla="glg \$(git rev-list -g --all)"
 alias gga="git rev-list --all | xargs git grep"
 alias ggaa="git rev-list -g --all | xargs git grep"
+alias grl='git reflog --date=iso'
 
 alias gpo="git push origin"
 alias gpd="git push -d origin"
@@ -29,7 +31,7 @@ alias grbm="git rebase -i --rebase-merges \`git merge-base HEAD master\`"
 alias grm='git rebase master'
 alias grmi='git rebase -i master'
 alias gr0='gri `git rev-list --max-parents=0 HEAD`'
-alias oops="git diff \`git rev-parse --abbrev-ref HEAD\`@{1} HEAD"
+alias oops="git diff @{1} HEAD"
 
 alias detach="gco --detach"
 alias ghr="git reset --soft"
@@ -57,6 +59,10 @@ squash() {
 }
 # git branch $1 := $2 ?: HEAD
 alias gbe="git checkout -B"
+
+# Tags
+alias gtx='git tag -d'
+alias gtf='git tag -f'
 
 # continue
 # alias grc="git rebase --continue"
