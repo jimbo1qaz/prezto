@@ -1,6 +1,7 @@
 zstyle ':prezto:module:utility' safe-ops no
 
 alias unswap="sudo /home/jimbo1qaz/bin/unswap"
+alias unswap2="sudo /home/jimbo1qaz/bin/unswap2"
 alias wsync='watch grep -e Dirty: -e Writeback: /proc/meminfo'
 alias pwhich="pyenv which"
 
@@ -115,8 +116,8 @@ alias renge=funky
 
 alias rga='rg --no-ignore'
 
-export ANDROID_HOME="~/Android/Sdk"
+#export ANDROID_HOME="~/Android/Sdk"
 export PATH="$PATH:`echo ~`/src/fdroidserver"
 #LESS='-F -g -i -M -R -S -w -X -z-4'
 export LESS='-i -M -w -R -X -z-4 --tabs 4'
-function gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
+function gi() { curl -sL https://www.gitignore.io/api/$@ ;}
