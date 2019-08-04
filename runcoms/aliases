@@ -1,5 +1,11 @@
 zstyle ':prezto:module:utility' safe-ops no
 
+help() {
+	$* --help | less
+}
+
+alias dot='. ~/.aliases'
+
 alias unswap="sudo /home/jimbo1qaz/bin/unswap"
 alias unswap2="sudo /home/jimbo1qaz/bin/unswap2"
 alias wsync='watch grep -e Dirty: -e Writeback: /proc/meminfo'
@@ -115,6 +121,8 @@ alias remount="sudo mount -o remount,rw"
 alias renge=funky
 
 alias rga='rg --no-ignore'
+alias rgb='rg --binary'
+alias rgba='rg --binary --no-ignore'
 
 #export ANDROID_HOME="~/Android/Sdk"
 export PATH="$PATH:`echo ~`/src/fdroidserver"
