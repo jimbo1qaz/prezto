@@ -39,6 +39,11 @@ alias grm='git rebase master'
 alias grmi='git rebase -i master'
 alias gr0='gri `git rev-list --max-parents=0 HEAD`'
 alias oops="git diff @{1} HEAD"
+cdiff() {
+  a=$1
+  b=${2:-HEAD}
+  git range-diff $a~..$a $b~..$b
+}
 
 alias detach="gco --detach"
 alias ghr="git reset --soft"
