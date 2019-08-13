@@ -44,6 +44,13 @@ cdiff() {
   b=${2:-HEAD}
   git range-diff $a~..$a $b~..$b
 }
+files-changed() {
+	a=${1:-HEAD}
+	git diff-tree --no-commit-id --name-only -r $a
+}
+gcp-modified() {
+	git apply --3way <(git show $1 -- $(files-changed))
+}
 
 alias detach="gco --detach"
 alias ghr="git reset --soft"
