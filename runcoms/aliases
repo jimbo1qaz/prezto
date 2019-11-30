@@ -130,7 +130,6 @@ alias cls='clear && echo -en "\e[3J"'
 alias font="sudo fc-cache -f -v"
 
 alias remount="sudo mount -o remount,rw"
-alias renge=funky
 
 alias rga='rg --no-ignore'
 alias rgb='rg --binary'
